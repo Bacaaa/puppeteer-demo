@@ -65,13 +65,26 @@ describe('todomvc application', () => {
       await po.addTodo(todo)
     }
 
+    let items
     // assert
-    let items = await po.visibleTodosCount()
+    items = await po.visibleTodosCount()
     expect(items).toEqual(5)
 
     await po.setTodoCompleted(1)
 
     await po.setTodoCompleted(3)
+
+    await po.setFilter('all')
+    items = await po.visibleTodosCount()
+    expect(items).toEqual(5)
+    
+    await po.setFilter('active')
+    items = await po.visibleTodosCount()
+    expect(items).toEqual(3)
+    
+    await po.setFilter('completed')
+    items = await po.visibleTodosCount()
+    expect(items).toEqual(2)
     
   }, 100000)
 })

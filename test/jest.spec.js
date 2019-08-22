@@ -5,6 +5,8 @@ describe('EXAMPLE JEST TESTS', () => {
 
   it('some test', () => {
     expect(1 + 3).not.toEqual(3)
+
+    const spy = jest.fn()
   })
 
   it('some test', () => {

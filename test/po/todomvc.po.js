@@ -52,7 +52,17 @@ const TodomvcPO = (page) => ({
     if (isChecked){
       await this.clickTodo(idx)
     }
-  }
+  },
+
+  filterTypes: {
+    'all': '#/all',
+    'active': '#/active',
+    'completed': '#/completed',
+  },
+
+  async setFilter(filter){
+    return page.click(`.filters a[href="${ this.filterTypes[filter] }"]`)
+  },
 })
 
 module.exports = {
